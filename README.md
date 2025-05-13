@@ -1,0 +1,63 @@
+# humanoid-mujoco-sim
+
+## 1. 运行仿真
+
+- 打开一个 Bash 终端。
+
+- 下载 MuJoCo 仿真器代码：
+
+  ```
+  git clone --recurse ssh://git@192.168.2.65:8022/software/sdk/limx_robot_sdk/distro/humanoid-mujoco-sim.git
+  ```
+
+- 安装运动控制开发库：
+
+  - Linux x86_64 环境
+
+    ```
+    pip install humanoid-mujoco-sim/humanoid-sdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
+    ```
+
+  - Linux aarch64 环境
+
+    ```
+    pip install humanoid-mujoco-sim/humanoid-sdk-lowlevel/python3/aarch64/limxsdk-*-py3-none-any.whl
+    ```
+
+- 设置机器人类型
+
+  - 通过 Shell 命令 `tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description` 列出可用的机器人类型：
+
+    ```
+    limx@limx:~$ tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description
+    humanoid-mujoco-sim/humanoid-description
+    ├── DA_D03_description
+    │   └── meshes
+    │       ├── DA_D03_01
+    │       └── DA_D03_02
+    ├── HU_D03_description
+    │   └── meshes
+    │       ├── HU_D03_01
+    │       └── HU_D03_02
+    └── UB_D03_description
+        └── meshes
+            ├── UB_D03_01
+            └── UB_D03_02
+    
+    ```
+
+  - 以`HU_D03_02`（请根据实际机器人类型进行替换）为例，设置机器人型号类型：
+
+    ```
+    echo 'export ROBOT_TYPE=HU_D03_02' >> ~/.bashrc && source ~/.bashrc
+    ```
+
+- 运行 MuJoCo 仿真器：
+
+  ```
+  python humanoid-mujoco-sim/simulator.py
+  ```
+
+## 2. 仿真展示
+
+![](doc/simulator.gif)
