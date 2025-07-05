@@ -1,0 +1,9 @@
+[submodule "robot-joystick"]
+	path = robot-joystick
+	url = https://github.com/limxdynamics/robot-joystick.git
+[submodule "limxsdk-lowlevel"]
+	path = limxsdk-lowlevel
+	url = https://github.com/limxdynamics/limxsdk-lowlevel.git
+[submodule "humanoid-description"]
+	path = humanoid-description
+	url = git@github.com:limxdynamics/humanoid-description.git

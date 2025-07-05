@@ -15,13 +15,13 @@
   - Linux x86_64 环境
 
     ```
-    pip install humanoid-mujoco-sim/humanoid-sdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
+    pip install humanoid-mujoco-sim/limxsdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
     ```
 
   - Linux aarch64 环境
 
     ```
-    pip install humanoid-mujoco-sim/humanoid-sdk-lowlevel/python3/aarch64/limxsdk-*-py3-none-any.whl
+    pip install humanoid-mujoco-sim/limxsdk-lowlevel/python3/aarch64/limxsdk-*-py3-none-any.whl
     ```
 
 - 设置机器人类型
