@@ -7,7 +7,7 @@
 - 下载 MuJoCo 仿真器代码：
 
   ```
-  git clone --recurse ssh://git@192.168.2.65:8022/software/sdk/limx_robot_sdk/distro/humanoid-mujoco-sim.git
+  git clone --recurse git@github.com:limxdynamics/humanoid-mujoco-sim.git
   ```
 
 - 安装运动控制开发库：
