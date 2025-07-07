@@ -2,6 +2,8 @@
 
 ## 1. 运行仿真
 
+- 运行环境：推荐Pyhon 3.8 及以后版本
+
 - 打开一个 Bash 终端。
 
 - 下载 MuJoCo 仿真器代码：
@@ -31,27 +33,18 @@
     ```
     limx@limx:~$ tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description
     humanoid-mujoco-sim/humanoid-description
-    ├── DA_D03_description
-    │   └── meshes
-    │       ├── DA_D03_01
-    │       └── DA_D03_02
-    ├── HU_D03_description
-    │   └── meshes
-    │       ├── HU_D03_01
-    │       └── HU_D03_02
-    └── UB_D03_description
+    └── HU_D03_description
         └── meshes
-            ├── UB_D03_01
-            └── UB_D03_02
+            └── UB_D03_03
     
     ```
-
+    
   - 以`HU_D03_02`（请根据实际机器人类型进行替换）为例，设置机器人型号类型：
-
+  
     ```
-    echo 'export ROBOT_TYPE=HU_D03_02' >> ~/.bashrc && source ~/.bashrc
+    echo 'export ROBOT_TYPE=HU_D03_03' >> ~/.bashrc && source ~/.bashrc
     ```
-
+  
 - 运行 MuJoCo 仿真器：
 
   ```
