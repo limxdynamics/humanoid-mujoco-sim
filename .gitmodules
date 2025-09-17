@@ -6,4 +6,4 @@
 	url = https://github.com/limxdynamics/limxsdk-lowlevel.git
 [submodule "humanoid-description"]
 	path = humanoid-description
-	url = git@github.com:limxdynamics/humanoid-description.git
+	url = https://github.com/limxdynamics/humanoid-description.git
