@@ -1,0 +1,11 @@
+use_pd_ctrl: false
+use_joint_name: true
+num_of_actuation_joint: 31
+joints_name: ["left_hip_pitch_joint", "left_hip_roll_joint", "left_hip_yaw_joint", "left_knee_joint", "left_ankle_pitch_joint", "left_ankle_roll_joint",
+              "right_hip_pitch_joint", "right_hip_roll_joint", "right_hip_yaw_joint", "right_knee_joint", "right_ankle_pitch_joint", "right_ankle_roll_joint",
+              "waist_yaw_joint", "waist_roll_joint", "waist_pitch_joint",
+              "head_yaw_joint", "head_pitch_joint",
+              "left_shoulder_pitch_joint", "left_shoulder_roll_joint", "left_shoulder_yaw_joint", "left_elbow_joint", 
+              "left_wrist_yaw_joint", "left_wrist_pitch_joint", "left_wrist_roll_joint",
+              "right_shoulder_pitch_joint", "right_shoulder_roll_joint", "right_shoulder_yaw_joint", "right_elbow_joint", 
+              "right_wrist_yaw_joint", "right_wrist_pitch_joint", "right_wrist_roll_joint"]
