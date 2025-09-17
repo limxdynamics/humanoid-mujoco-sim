@@ -35,10 +35,9 @@
     ```
     limx@limx:~$ tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description
     humanoid-mujoco-sim/humanoid-description
-    └── HU_D03_description
-        └── meshes
-            └── UB_D03_03
-    
+    ├── HU_D03_description
+    │   └── meshes
+    │       └── HU_D03_03
     ```
     
   - Taking `HU_D03_03` (replace with your actual robot type) as an example, set the robot model type:

@@ -37,7 +37,7 @@
     humanoid-mujoco-sim/humanoid-description
     └── HU_D03_description
         └── meshes
-            └── UB_D03_03
+            └── HU_D03_03
     
     ```
     
