@@ -211,7 +211,7 @@ if __name__ == '__main__':
         print(f"ERROR: Invalid IPv4 format ({robot_ip})")
         sys.exit(1)
 
-    # Create a Robot instance of the PointFoot type
+    # Create a Robot instance of the Humanoid type
     robot = Robot(RobotType.Humanoid, True)
 
     # Initialize the robot with the provided IP address
