@@ -197,19 +197,26 @@ if __name__ == '__main__':
     # Is floating base
     floating_base = main_robot_type.startswith(('DA_', 'UB_'))
 
-    # Create a Robot instance of the PointFoot type
-    robot = Robot(RobotType.Humanoid, True)
-
     # Default IP address for the robot
     robot_ip = "127.0.0.1"
     
     # Check if command-line argument is provided for robot IP
     if len(sys.argv) > 1:
         robot_ip = sys.argv[1]
+    
+    ip_parts = robot_ip.split('.')
+    if len(ip_parts) == 4:
+        os.environ["MROS_IP_LIST"] = f"{ip_parts[0]}.{ip_parts[1]}.{ip_parts[2]}.x"
+    else:
+        print(f"ERROR: Invalid IPv4 format ({robot_ip})")
+        sys.exit(1)
+
+    # Create a Robot instance of the PointFoot type
+    robot = Robot(RobotType.Humanoid, True)
 
     # Initialize the robot with the provided IP address
     if not robot.init(robot_ip):
-        sys.exit()
+        sys.exit(1)
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
