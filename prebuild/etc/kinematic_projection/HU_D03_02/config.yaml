@@ -1,6 +1,13 @@
 use_pd_ctrl: false
 use_joint_name: true
 num_of_actuation_joint: 31
+
+motor_cmd_topic: "/motor/cmd"
+joint_cmd_topic: "/joint/cmd"
+
+motor_state_topic: "/motor/state"
+joint_state_topic: "/joint/state"
+
 joints_name: ["left_hip_pitch_joint", "left_hip_roll_joint", "left_hip_yaw_joint", "left_knee_joint", "left_ankle_pitch_joint", "left_ankle_roll_joint",
               "right_hip_pitch_joint", "right_hip_roll_joint", "right_hip_yaw_joint", "right_knee_joint", "right_ankle_pitch_joint", "right_ankle_roll_joint",
               "waist_yaw_joint", "waist_roll_joint", "waist_pitch_joint",
@@ -9,3 +16,37 @@ joints_name: ["left_hip_pitch_joint", "left_hip_roll_joint", "left_hip_yaw_joint
               "left_wrist_yaw_joint", "left_wrist_pitch_joint", "left_hand_yaw_joint",
               "right_shoulder_pitch_joint", "right_shoulder_roll_joint", "right_shoulder_yaw_joint", "right_elbow_joint", 
               "right_wrist_yaw_joint", "right_wrist_pitch_joint", "right_hand_yaw_joint"]
+
+soft_limit_scale: 0.95
+limited_joint_indices: [4, 5, 
+                        10, 11, 
+                        13, 14]
+# motor limits
+motor_lower_limit: [-2.618, -0.873, -2.618, -0.087, -1.184, -0.91,
+                    -2.618, -2.094, -2.618, -0.087, -0.91, -1.184,
+                    -2.618, -0.785, -0.785,
+                    -0.785, -0.524,
+                    -2.792, -0.087, -3.403, -2.443, -2.356, -1.571, -1.571,
+                    -2.792, -3.229, -1.571, -2.443, -0.785, -1.571, -1.571]
+
+motor_upper_limit: [ 2.618, 2.094, 2.618, 2.583, 0.91, 1.184,
+                     2.618, 0.873, 2.618, 2.583, 1.184, 0.91,
+                     2.618, 0.524, 0.524,
+                     0.785, 0.785,
+                     2.792, 3.229, 1.571, 1.571, 0.785, 1.571, 1.571, 
+                     2.792, 0.087, 3.403, 1.571, 2.356, 1.571, 1.571]
+
+# joint limits
+joint_lower_limit: [-2.618, -0.873, -2.618, -0.087, -1.012, -0.436,
+                    -2.618, -2.094, -2.618, -0.087, -1.012, -0.436,
+                    -2.618, -0.524, -0.524,
+                    -0.785, -0.524,
+                    -2.792, -0.087, -3.403, -2.443, -2.356, -1.571, -1.571,
+                    -2.792, -3.229, -1.571, -2.443, -0.785, -1.571, -1.571]
+
+joint_upper_limit: [ 2.618, 2.094, 2.618, 2.583, 0.611, 0.436,
+                     2.618, 0.873, 2.618, 2.583, 0.611, 0.436,
+                     2.618, 0.524, 0.785,
+                     0.785, 0.785,
+                     2.792, 3.229, 1.571, 1.571, 0.785, 1.571, 1.571,
+                     2.792, 0.087, 3.403, 1.571, 2.356, 1.571, 1.571]

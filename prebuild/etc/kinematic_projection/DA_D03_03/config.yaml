@@ -1,8 +1,35 @@
 use_pd_ctrl: false
 use_joint_name: true
 num_of_actuation_joint: 16
+
+motor_cmd_topic: "/motor/cmd"
+joint_cmd_topic: "/joint/cmd"
+
+motor_state_topic: "/motor/state"
+joint_state_topic: "/joint/state"
+
 joints_name: ["head_yaw_joint", "head_pitch_joint",
               "left_shoulder_pitch_joint", "left_shoulder_roll_joint", "left_shoulder_yaw_joint", "left_elbow_joint", 
               "left_wrist_yaw_joint", "left_wrist_pitch_joint", "left_hand_yaw_joint",
               "right_shoulder_pitch_joint", "right_shoulder_roll_joint", "right_shoulder_yaw_joint", "right_elbow_joint", 
               "right_wrist_yaw_joint", "right_wrist_pitch_joint", "right_hand_yaw_joint"]
+
+soft_limit_scale: 1.0
+limited_joint_indices: [0, 1]
+# motor limits
+motor_lower_limit: [-0.785, -0.524,
+                    -2.792, -0.087, -3.403, -2.443, -2.356, -1.571, -1.571,
+                    -2.792, -3.229, -1.571, -2.443, -0.785, -1.571, -1.571]
+
+motor_upper_limit: [ 0.785, 0.785,
+                     2.792, 3.229, 1.571, 1.571, 0.785, 1.571, 1.571, 
+                     2.792, 0.087, 3.403, 1.571, 2.356, 1.571, 1.571]
+
+# joint limits
+joint_lower_limit: [-0.785, -0.524,
+                    -2.792, -0.087, -3.403, -2.443, -2.356, -1.571, -1.571,
+                    -2.792, -3.229, -1.571, -2.443, -0.785, -1.571, -1.571]
+
+joint_upper_limit: [ 0.785, 0.785,
+                     2.792, 3.229, 1.571, 1.571, 0.785, 1.571, 1.571,
+                     2.792, 0.087, 3.403, 1.571, 2.356, 1.571, 1.571]
