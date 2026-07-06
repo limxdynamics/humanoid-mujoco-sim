@@ -8,6 +8,10 @@ joint_cmd_topic: "/joint/cmd"
 motor_state_topic: "/motor/state"
 joint_state_topic: "/joint/state"
 
+enable_configurable_thread_priority: false
+motor_state_to_joint_state_thread_priority: 94
+joint_cmd_to_motor_cmd_thread_priority: 95
+
 joints_name: ["left_hip_pitch_joint", "left_hip_roll_joint", "left_hip_yaw_joint", "left_knee_joint", "left_ankle_pitch_joint", "left_ankle_roll_joint",
               "right_hip_pitch_joint", "right_hip_roll_joint", "right_hip_yaw_joint", "right_knee_joint", "right_ankle_pitch_joint", "right_ankle_roll_joint",
               "waist_yaw_joint", "waist_roll_joint", "waist_pitch_joint",

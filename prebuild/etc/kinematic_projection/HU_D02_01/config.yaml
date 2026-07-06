@@ -15,14 +15,16 @@ joint_cmd_to_motor_cmd_thread_priority: 95
 joints_name: ["left_hip_pitch_joint", "left_hip_roll_joint", "left_hip_yaw_joint", "left_knee_joint", "left_ankle_pitch_joint", "left_ankle_roll_joint",
               "right_hip_pitch_joint", "right_hip_roll_joint", "right_hip_yaw_joint", "right_knee_joint", "right_ankle_pitch_joint", "right_ankle_roll_joint",
               "waist_yaw_joint", "waist_roll_joint", "waist_pitch_joint",
-              "head_yaw_joint", "head_pitch_joint",
+              "head_pitch_joint", "head_yaw_joint",
               "left_shoulder_pitch_joint", "left_shoulder_roll_joint", "left_shoulder_yaw_joint", "left_elbow_joint", 
-              "left_wrist_yaw_joint", "left_wrist_pitch_joint", "left_wrist_roll_joint",
+              "left_hand_yaw_joint", "left_hand_roll_joint", "left_hand_pitch_joint",
               "right_shoulder_pitch_joint", "right_shoulder_roll_joint", "right_shoulder_yaw_joint", "right_elbow_joint", 
-              "right_wrist_yaw_joint", "right_wrist_pitch_joint", "right_wrist_roll_joint"]
+              "right_hand_yaw_joint", "right_hand_roll_joint", "right_hand_pitch_joint"]
 
-soft_limit_scale: 1.0
-limited_joint_indices: [0]
+soft_limit_scale: 0.95
+limited_joint_indices: [4, 5, 
+                        10, 11, 
+                        13, 14]
 # motor limits
 motor_lower_limit: [-2.618, -0.873, -2.618, -0.087, -1.184, -0.91,
                     -2.618, -2.094, -2.618, -0.087, -0.91, -1.184,

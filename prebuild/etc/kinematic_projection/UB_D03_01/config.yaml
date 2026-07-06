@@ -1,6 +1,11 @@
 use_pd_ctrl: false
 use_joint_name: true
 num_of_actuation_joint: 19
+
+enable_configurable_thread_priority: false
+motor_state_to_joint_state_thread_priority: 94
+joint_cmd_to_motor_cmd_thread_priority: 95
+
 joints_name: ["waist_yaw_joint", "waist_roll_joint", "waist_pitch_joint",
               "head_yaw_joint", "head_pitch_joint",
               "left_shoulder_pitch_joint", "left_shoulder_roll_joint", "left_shoulder_yaw_joint", "left_elbow_joint", 

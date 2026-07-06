@@ -1,0 +1,12 @@
+use_pd_ctrl: false
+use_joint_name: true
+num_of_actuation_joint: 22
+
+enable_configurable_thread_priority: false
+motor_state_to_joint_state_thread_priority: 94
+joint_cmd_to_motor_cmd_thread_priority: 95
+
+joints_name: ["hip_roll_joint_L", "hip_yaw_joint_L", "hip_pitch_joint_L", "knee_joint_L", "ankle_pitch_joint_L", "ankle_roll_joint_L",
+              "hip_roll_joint_R", "hip_yaw_joint_R", "hip_pitch_joint_R", "knee_joint_R", "ankle_pitch_joint_R", "ankle_roll_joint_R",
+              "shoulder_pitch_joint_L", "shoulder_roll_joint_L", "shoulder_yaw_joint_L", "elbow_joint_L", "wrist_joint_L",
+              "shoulder_pitch_joint_R", "shoulder_roll_joint_R", "shoulder_yaw_joint_R", "elbow_joint_R", "wrist_joint_R"]

@@ -8,6 +8,10 @@ joint_cmd_topic: "/joint/cmd"
 motor_state_topic: "/motor/state"
 joint_state_topic: "/joint/state"
 
+enable_configurable_thread_priority: false
+motor_state_to_joint_state_thread_priority: 94
+joint_cmd_to_motor_cmd_thread_priority: 95
+
 joints_name: ["head_yaw_joint", "head_pitch_joint",
               "left_shoulder_pitch_joint", "left_shoulder_roll_joint", "left_shoulder_yaw_joint", "left_elbow_joint", 
               "left_wrist_yaw_joint", "left_wrist_pitch_joint", "left_hand_yaw_joint",
