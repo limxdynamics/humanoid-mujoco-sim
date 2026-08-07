@@ -1,61 +1,73 @@
-# 中文 | [English](README.md)
-
 # humanoid-mujoco-sim
 
-## 1. 运行仿真
+LimX 人形机器人（HU_D03、HU_D04）的 MuJoCo 仿真环境。用于可视化机器人模型、测试运动控制器、在仿真中验证 RL 策略后再部署到真机。
 
-- 运行环境：推荐Pyhon 3.8 及以上版本
+## 1. 快速开始
 
-- 打开一个 Bash 终端。
+### 前提条件
 
-- 下载 MuJoCo 仿真器代码：
+- Python 3.8 或更高版本
+- Linux (x86_64)
 
-  ```
-  git clone --recurse git@github.com:limxdynamics/humanoid-mujoco-sim.git
-  ```
+> 内置的 `prebuild/kinematic_projection` 辅助程序仅支持 x86_64。aarch64 用户可安装 limxsdk wheel，但仿真功能将受限。
 
-- 安装运动控制开发库：
+### 安装
 
-  - Linux x86_64 环境
+```bash
+# 克隆仓库及子模块（HTTPS）
+git clone --recurse-submodules https://github.com/limxdynamics/humanoid-mujoco-sim.git
+cd humanoid-mujoco-sim
 
-    ```
-    pip install humanoid-mujoco-sim/limxsdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
-    ```
+# 安装依赖
+pip install -r requirements.txt
 
-  - Linux aarch64 环境
+# 安装 LimX 运动控制 SDK
+pip install limxsdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
+```
 
-    ```
-    pip install humanoid-mujoco-sim/limxsdk-lowlevel/python3/aarch64/limxsdk-*-py3-none-any.whl
-    ```
+### 设置机器人型号
 
-- 设置机器人类型
+可用型号：`HU_D03_03`、`HU_D04_01`
 
-  - 通过 Shell 命令 `tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description` 列出可用的机器人类型：
+```bash
+echo 'export ROBOT_TYPE=HU_D04_01' >> ~/.bashrc && source ~/.bashrc
+```
 
-    ```
-    limx@limx:~$ tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description
-    humanoid-mujoco-sim/humanoid-description
-    ├── HU_D03_description
-    │   └── meshes
-    │       └── HU_D03_03
-    └── HU_D04_description
-        └── meshes
-            └── HU_D04_01
-    
-    ```
-    
-  - 以`HU_D04_01`（请根据实际机器人类型进行替换）为例，设置机器人型号类型：
-  
-    ```
-    echo 'export ROBOT_TYPE=HU_D04_01' >> ~/.bashrc && source ~/.bashrc
-    ```
-  
-- 运行 MuJoCo 仿真器：
+### 运行
 
-  ```
-  python humanoid-mujoco-sim/simulator.py
-  ```
+```bash
+python simulator.py
+```
 
-## 2. 仿真展示
+你会看到机器人站立在 MuJoCo 窗口中。使用鼠标右键拖拽旋转视角，滚轮缩放。
 
-![](doc/simulator.gif)
+## 2. 仿真操控
+
+| 按键 | 操作 |
+|-----|--------|
+| `Tab` | 切换左右 UI 面板 |
+| `Space` | 暂停 / 恢复仿真 |
+| 右键 + 拖拽 | 旋转摄像机 |
+| 滚轮 | 缩放 |
+
+## 3. 虚拟摇杆
+
+使用内置的虚拟摇杆交互控制机器人：
+
+```bash
+# Linux
+./robot-joystick/robot-joystick
+# Windows
+robot-joystick/robot-joystick.exe
+```
+
+## 4. 仿真演示
+
+![simulator](doc/simulator.gif)
+
+## 5. 相关仓库
+
+- [humanoid-description](https://github.com/limxdynamics/humanoid-description) — 机器人模型文件（URDF/MuJoCo）
+- [humanoid-rl-deploy-python](https://github.com/limxdynamics/humanoid-rl-deploy-python) — Python RL 策略部署
+- [humanoid-rl-deploy-cpp](https://github.com/limxdynamics/humanoid-rl-deploy-cpp) — 无 ROS 依赖的 C++ RL 部署
+- [humanoid-rl-isaaclab](https://github.com/limxdynamics/humanoid-rl-isaaclab) — 基于 Isaac Lab 的 RL 训练
