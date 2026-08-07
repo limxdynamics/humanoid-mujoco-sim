@@ -1,3 +1,5 @@
+# 中文 | [English](README.md)
+
 # humanoid-mujoco-sim
 
 LimX 人形机器人（HU_D03、HU_D04）的 MuJoCo 仿真环境。用于可视化机器人模型、测试运动控制器、在仿真中验证 RL 策略后再部署到真机。
