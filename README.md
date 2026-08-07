@@ -1,60 +1,73 @@
-# English | [中文](README_cn.md)
-
 # humanoid-mujoco-sim
 
-## 1. Run the Simulation
+MuJoCo simulation environment for LimX humanoid robots (HU_D03, HU_D04). Use it to visualize robot models, test motion controllers, and validate RL policies in simulation before deploying to hardware.
 
-- Operating Environment: Python 3.8 or higher is recommended.
+## 1. Quick Start
 
-- Open a Bash terminal.
+### Prerequisites
 
-- Download the MuJoCo simulator code:
+- Python 3.8 or higher
+- Linux (x86_64)
 
-  ```
-  git clone --recurse git@github.com:limxdynamics/humanoid-mujoco-sim.git
-  ```
+> The bundled `prebuild/kinematic_projection` helper is x86_64-only. aarch64 users can install the limxsdk wheel but simulation functionality will be limited.
 
-- Install the motion control development library:
+### Install
 
-  - For Linux x86_64 environment:
+```bash
+# Clone with submodules (HTTPS)
+git clone --recurse-submodules https://github.com/limxdynamics/humanoid-mujoco-sim.git
+cd humanoid-mujoco-sim
 
-    ```
-    pip install humanoid-mujoco-sim/limxsdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
-    ```
+# Install dependencies
+pip install -r requirements.txt
 
-  - For Linux aarch64 environment:
+# Install the LimX motion control SDK
+pip install limxsdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
+```
 
-    ```
-    pip install humanoid-mujoco-sim/limxsdk-lowlevel/python3/aarch64/limxsdk-*-py3-none-any.whl
-    ```
+### Set Robot Type
 
-- Set the robot type:
+Available models: `HU_D03_03`, `HU_D04_01`
 
-  - List available robot types with the Shell command `tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description`：
+```bash
+echo 'export ROBOT_TYPE=HU_D04_01' >> ~/.bashrc && source ~/.bashrc
+```
 
-    ```
-    limx@limx:~$ tree -L 3 -P "meshes" -I "urdf|world|xml|usd" humanoid-mujoco-sim/humanoid-description
-    humanoid-mujoco-sim/humanoid-description
-    ├── HU_D03_description
-    │   └── meshes
-    │       └── HU_D03_03
-    └── HU_D04_description
-        └── meshes
-            └── HU_D04_01
-    ```
-    
-  - Taking `HU_D04_01` (replace with your actual robot type) as an example, set the robot model type:
-  
-    ```
-    echo 'export ROBOT_TYPE=HU_D04_01' >> ~/.bashrc && source ~/.bashrc
-    ```
-  
-- Run the MuJoCo simulator:
+### Run
 
-  ```
-  python humanoid-mujoco-sim/simulator.py
-  ```
+```bash
+python simulator.py
+```
 
-## 2. Simulation Demonstration
+You should see the robot standing in a MuJoCo window. Use mouse (right-click + drag) to rotate the view, scroll to zoom.
 
-![](doc/simulator.gif)
+## 2. Simulation Controls
+
+| Key | Action |
+|-----|--------|
+| `Tab` | Toggle left/right UI panels |
+| `Space` | Pause / Resume simulation |
+| Right-click + drag | Rotate camera |
+| Scroll | Zoom |
+
+## 3. Virtual Joystick
+
+Use the included virtual joystick to control the robot interactively:
+
+```bash
+# Linux
+./robot-joystick/robot-joystick
+# Windows
+robot-joystick/robot-joystick.exe
+```
+
+## 4. Simulation Demonstration
+
+![simulator](doc/simulator.gif)
+
+## 5. Related Repositories
+
+- [humanoid-description](https://github.com/limxdynamics/humanoid-description) — Robot model files (URDF/MuJoCo)
+- [humanoid-rl-deploy-python](https://github.com/limxdynamics/humanoid-rl-deploy-python) — Python RL policy deployment
+- [humanoid-rl-deploy-cpp](https://github.com/limxdynamics/humanoid-rl-deploy-cpp) — ROS-free C++ RL deployment
+- [humanoid-rl-isaaclab](https://github.com/limxdynamics/humanoid-rl-isaaclab) — RL training with Isaac Lab
