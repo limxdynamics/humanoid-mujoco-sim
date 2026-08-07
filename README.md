@@ -1,3 +1,5 @@
+# English | [中文](README_cn.md)
+
 # humanoid-mujoco-sim
 
 MuJoCo simulation environment for LimX humanoid robots (HU_D03, HU_D04). Use it to visualize robot models, test motion controllers, and validate RL policies in simulation before deploying to hardware.
