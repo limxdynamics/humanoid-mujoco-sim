@@ -1,0 +1,2 @@
+# NEW FILE: humanoid-mujoco-sim/requirements.txt
+mujoco>=3.0.0
