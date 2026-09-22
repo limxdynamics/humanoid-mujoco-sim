@@ -24,7 +24,7 @@ cd humanoid-mujoco-sim
 pip install -r requirements.txt
 
 # Install the LimX motion control SDK
-pip install limxsdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
+pip install limxsdk-lowlevel/python3/amd64/limxsdk-*.whl
 ```
 
 ### Set Robot Type
