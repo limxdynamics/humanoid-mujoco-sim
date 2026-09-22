@@ -24,7 +24,7 @@ cd humanoid-mujoco-sim
 pip install -r requirements.txt
 
 # 安装 LimX 运动控制 SDK
-pip install limxsdk-lowlevel/python3/amd64/limxsdk-*-py3-none-any.whl
+pip install limxsdk-lowlevel/python3/amd64/limxsdk-*.whl
 ```
 
 ### 设置机器人型号
