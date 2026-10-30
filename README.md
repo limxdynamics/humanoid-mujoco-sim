@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="doc/banner.png" alt="humanoid-mujoco-sim: the HU_D04 humanoid waving in a MuJoCo window, next to the virtual joystick with L1 and B highlighted" width="100%">
+  <img src="doc/banner.png" alt="humanoid-mujoco-sim: the HU_D04_01 humanoid waving on a MuJoCo floor, labelled with the 1 ms timestep and the limxsdk address 127.0.0.1" width="100%">
 </p>
 
 <p align="center">
@@ -43,10 +43,10 @@ MuJoCo simulation environment for LimX humanoid robots (HU_D03, HU_D04). Use it 
 ## How it works
 
 <p align="center">
-  <img src="doc/how_en.png" alt="Three programs on one computer: the virtual joystick sends buttons to your controller, the simulator sends joint state and IMU to your controller, and your controller sends joint commands back" width="100%">
+  <img src="doc/how_en.png" alt="Three programs on one computer: robot-joystick sends buttons to your controller; simulator.py publishes RobotState and ImuData every 1 ms step and applies the RobotCmd it receives as torque = Kp (q* - q) + Kd (dq* - dq) + tau" width="100%">
 </p>
 
-## 1. Quick Start
+## Quick start
 
 ### Prerequisites
 
@@ -83,40 +83,11 @@ echo 'export ROBOT_TYPE=HU_D04_01' >> ~/.bashrc && source ~/.bashrc
 python simulator.py
 ```
 
-A MuJoCo window opens with the robot. With no controller running yet, the robot is not actuated and slumps to the floor; start a controller (see [Connect a controller](#6-connect-a-controller)), then click **Reset** in the left panel. Use mouse (right-click + drag) to rotate the view, scroll to zoom.
+A MuJoCo window opens with the robot. With no controller running yet, the robot is not actuated and slumps to the floor; start a controller (see [Connect a controller](#connect-a-controller)), then click **Reset** in the left panel. Use mouse (right-click + drag) to rotate the view, scroll to zoom.
 
-## 2. Simulation Controls
+![The HU_D04_01 standing and waving in the MuJoCo window, driven by a controller](doc/simulator.gif)
 
-| Key | Action |
-|-----|--------|
-| `Tab` | Toggle left/right UI panels |
-| `Space` | Pause / Resume simulation |
-| Right-click + drag | Rotate camera |
-| Scroll | Zoom |
-
-## 3. Virtual Joystick
-
-Use the included virtual joystick to control the robot interactively:
-
-```bash
-# Linux
-./robot-joystick/robot-joystick
-# Windows
-robot-joystick/robot-joystick.exe
-```
-
-## 4. Simulation Demonstration
-
-![simulator](doc/simulator.gif)
-
-## 5. Related Repositories
-
-- [humanoid-description](https://github.com/limxdynamics/humanoid-description) — Robot model files (URDF/MuJoCo)
-- [humanoid-rl-deploy-python](https://github.com/limxdynamics/humanoid-rl-deploy-python) — Python RL policy deployment
-- [humanoid-rl-deploy-cpp](https://github.com/limxdynamics/humanoid-rl-deploy-cpp) — ROS-free C++ RL deployment
-- [humanoid-rl-isaaclab](https://github.com/limxdynamics/humanoid-rl-isaaclab) — RL training with Isaac Lab
-
-## 6. Connect a controller
+## Connect a controller
 
 Start `simulator.py` first, then your controller with robot address
 `127.0.0.1`. With
@@ -136,6 +107,33 @@ Writing your own controller with limxsdk (`Robot(RobotType.Humanoid)`):
   and the robot stays limp.
 - `simulator.py` steps the model at its own timestep (1 ms) in real time; on a
   slow computer the simulation runs slower than real time.
+
+## Controls
+
+**MuJoCo window**
+
+| Key | Action |
+|-----|--------|
+| `Tab` | Toggle left/right UI panels |
+| `Space` | Pause / Resume simulation |
+| Right-click + drag | Rotate camera |
+| Scroll | Zoom |
+
+**Virtual joystick** (`robot-joystick`, keyboard in place of the remote):
+
+```bash
+# Linux
+./robot-joystick/robot-joystick
+# Windows
+robot-joystick/robot-joystick.exe
+```
+
+## Related repositories
+
+- [humanoid-description](https://github.com/limxdynamics/humanoid-description) — Robot model files (URDF/MuJoCo)
+- [humanoid-rl-deploy-python](https://github.com/limxdynamics/humanoid-rl-deploy-python) — Python RL policy deployment
+- [humanoid-rl-deploy-cpp](https://github.com/limxdynamics/humanoid-rl-deploy-cpp) — ROS-free C++ RL deployment
+- [humanoid-rl-isaaclab](https://github.com/limxdynamics/humanoid-rl-isaaclab) — RL training with Isaac Lab
 
 ## License
 

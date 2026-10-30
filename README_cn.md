@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="doc/banner.png" alt="humanoid-mujoco-sim：MuJoCo 窗口中挥手的 HU_D04 人形机器人，旁边是高亮了 L1 和 B 的虚拟摇杆" width="100%">
+  <img src="doc/banner_zh.png" alt="humanoid-mujoco-sim：在 MuJoCo 地面上挥手的 HU_D04_01 人形机器人，标注了 1 ms 步长和 limxsdk 地址 127.0.0.1" width="100%">
 </p>
 
 <p align="center">
@@ -38,10 +38,10 @@ LimX 人形机器人（HU_D03、HU_D04）的 MuJoCo 仿真环境。用于可视�
 ## 工作原理
 
 <p align="center">
-  <img src="doc/how_zh.png" alt="同一台电脑上的三个程序：虚拟摇杆把按键发给你的控制器，仿真器把关节状态和 IMU 发给控制器，控制器把关节指令发回仿真器" width="100%">
+  <img src="doc/how_zh.png" alt="同一台电脑上的三个程序：robot-joystick 把按键发给你的控制器；simulator.py 每 1 ms 步进发布 RobotState 和 ImuData，并把收到的 RobotCmd 按 torque = Kp (q* - q) + Kd (dq* - dq) + tau 施加到电机" width="100%">
 </p>
 
-## 1. 快速开始
+## 快速开始
 
 ### 前提条件
 
@@ -78,40 +78,11 @@ echo 'export ROBOT_TYPE=HU_D04_01' >> ~/.bashrc && source ~/.bashrc
 python simulator.py
 ```
 
-MuJoCo 窗口会打开并显示机器人。此时还没有控制器在运行，机器人没有驱动力，会瘫倒在地；启动控制器（见 [接入控制器](#6-接入控制器)）后，点击左侧面板的 **Reset**。使用鼠标右键拖拽旋转视角，滚轮缩放。
+MuJoCo 窗口会打开并显示机器人。此时还没有控制器在运行，机器人没有驱动力，会瘫倒在地；启动控制器（见[接入控制器](#接入控制器)）后，点击左侧面板的 **Reset**。使用鼠标右键拖拽旋转视角，滚轮缩放。
 
-## 2. 仿真操控
+![MuJoCo 窗口中由控制器驱动、站立并挥手的 HU_D04_01](doc/simulator.gif)
 
-| 按键 | 操作 |
-|-----|--------|
-| `Tab` | 切换左右 UI 面板 |
-| `Space` | 暂停 / 恢复仿真 |
-| 右键 + 拖拽 | 旋转摄像机 |
-| 滚轮 | 缩放 |
-
-## 3. 虚拟摇杆
-
-使用内置的虚拟摇杆交互控制机器人：
-
-```bash
-# Linux
-./robot-joystick/robot-joystick
-# Windows
-robot-joystick/robot-joystick.exe
-```
-
-## 4. 仿真演示
-
-![simulator](doc/simulator.gif)
-
-## 5. 相关仓库
-
-- [humanoid-description](https://github.com/limxdynamics/humanoid-description) — 机器人模型文件（URDF/MuJoCo）
-- [humanoid-rl-deploy-python](https://github.com/limxdynamics/humanoid-rl-deploy-python) — Python RL 策略部署
-- [humanoid-rl-deploy-cpp](https://github.com/limxdynamics/humanoid-rl-deploy-cpp) — 无 ROS 依赖的 C++ RL 部署
-- [humanoid-rl-isaaclab](https://github.com/limxdynamics/humanoid-rl-isaaclab) — 基于 Isaac Lab 的 RL 训练
-
-## 6. 接入控制器
+## 接入控制器
 
 先启动 `simulator.py`，再以机器人地址 `127.0.0.1` 启动你的控制器。以
 [humanoid-rl-deploy-ros2](https://github.com/limxdynamics/humanoid-rl-deploy-ros2) 为例：
@@ -127,6 +98,33 @@ ros2 launch robot_hw humanoid_hw_sim.launch.py
 - 把 `RobotCmd.motor_names` 填为 `robot.getMotorNames()`。不带名称的指令会被
   `kinematic_projection` 拒绝（"joint name: is incorrect"），机器人保持无力状态。
 - `simulator.py` 按模型自身步长（1 ms）实时步进；电脑较慢时仿真会慢于真实时间。
+
+## 操控
+
+**MuJoCo 窗口**
+
+| 按键 | 操作 |
+|-----|--------|
+| `Tab` | 切换左右 UI 面板 |
+| `Space` | 暂停 / 恢复仿真 |
+| 右键 + 拖拽 | 旋转摄像机 |
+| 滚轮 | 缩放 |
+
+**虚拟摇杆**（`robot-joystick`，用键盘代替遥控器）：
+
+```bash
+# Linux
+./robot-joystick/robot-joystick
+# Windows
+robot-joystick/robot-joystick.exe
+```
+
+## 相关仓库
+
+- [humanoid-description](https://github.com/limxdynamics/humanoid-description) — 机器人模型文件（URDF/MuJoCo）
+- [humanoid-rl-deploy-python](https://github.com/limxdynamics/humanoid-rl-deploy-python) — Python RL 策略部署
+- [humanoid-rl-deploy-cpp](https://github.com/limxdynamics/humanoid-rl-deploy-cpp) — 无 ROS 依赖的 C++ RL 部署
+- [humanoid-rl-isaaclab](https://github.com/limxdynamics/humanoid-rl-isaaclab) — 基于 Isaac Lab 的 RL 训练
 
 ## 许可证
 
