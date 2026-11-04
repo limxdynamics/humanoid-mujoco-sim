@@ -15,6 +15,8 @@
 
 # humanoid-mujoco-sim
 
+> **Oli 人形机器人开源生态的一部分。** 上手路线和其他 Oli 仓库：[Oli 快速上手](https://github.com/limxdynamics/limxdynamics/blob/main/doc/quickstart_cn.md#oli)。
+
 LimX 人形机器人（HU_D03、HU_D04）的 MuJoCo 仿真环境。用于可视化机器人模型、测试运动控制器、在仿真中验证 RL 策略后再部署到真机。
 
 > **范围：** 只包含仿真器，不含控制器或策略；需要在旁边运行一个控制器，例如

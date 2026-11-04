@@ -15,6 +15,8 @@
 
 # humanoid-mujoco-sim
 
+> **Part of the Oli humanoid open-source ecosystem.** Where to start and the other Oli repositories: [Oli quick start](https://github.com/limxdynamics/limxdynamics/blob/main/doc/quickstart.md#oli).
+
 MuJoCo simulation environment for LimX humanoid robots (HU_D03, HU_D04). Use it to visualize robot models, test motion controllers, and validate RL policies in simulation before deploying to hardware.
 
 > **Scope:** the simulator only. It does not contain a controller or policy;
